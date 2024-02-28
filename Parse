@@ -1,0 +1,60 @@
+function combinedDataSplit() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sourceSheetData = ss.getSheetByName('Data');
+  var targetSheetData = ss.getSheetByName('Data by ID');
+  
+  var sourceSheetMain = ss.getSheetByName('Main');
+  var targetSheets = {
+    'ID by Owner': ss.getSheetByName('ID by Owner'),
+    'ID by Framework': ss.getSheetByName('ID by Framework'),
+    'ID by Team': ss.getSheetByName('ID by Team'),
+    'ID by Assignee': ss.getSheetByName('ID by Assignee')
+  };
+  
+  // Process framework data
+  var data = sourceSheetData.getRange('A1:K').getValues();
+  var updatedData = [];
+  
+  for (var i = 0; i < data.length; i++) {
+    var rowData = data[i];
+    var segments = rowData[5].split(';');
+    for (var j = 0; j < segments.length; j++) {
+      var newRow = rowData.slice();
+      newRow[5] = segments[j].trim();
+      updatedData.push(newRow);
+    }
+  }
+  
+  targetSheetData.getRange('A1:K').clearContent();
+  targetSheetData.getRange(1, 1, updatedData.length, updatedData[0].length).setValues(updatedData);
+
+  // Process master data
+  var mainData = sourceSheetMain.getRange('A1:H' + sourceSheetMain.getLastRow()).getValues();
+  
+  for (var sheetName in targetSheets) {
+    if (targetSheets.hasOwnProperty(sheetName)) {
+      var targetSheet = targetSheets[sheetName];
+      targetSheet.getRange('A2:Y').clearContent();
+      
+      var updatedData = [];
+      var columnIndex = {
+        'ID by Owner': 2,
+        'ID by Framework': 7,
+        'ID by Team': 4,
+        'ID by Assignee': 3
+      };
+
+      for (var i = 0; i < mainData.length; i++) {
+        var rowData = mainData[i];
+        var segments = rowData[columnIndex[sheetName]].split(';');
+        for (var j = 0; j < segments.length; j++) {
+          var newRow = rowData.slice();
+          newRow[columnIndex[sheetName]] = segments[j].trim();
+          updatedData.push(newRow);
+        }
+      }
+
+      targetSheet.getRange(1, 1, updatedData.length, updatedData[0].length).setValues(updatedData);
+    }
+  }
+}
