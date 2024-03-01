@@ -17,7 +17,9 @@ Various excel formulas to consolidate control data into custom controls along wi
 
 # Import Template
 - [Import Template](https://docs.google.com/spreadsheets/d/1kEB0t3QLhopN4Q5PdrbuDz3_0N6DURJE9FfT6C6eA0Q/edit?usp=sharing)
-  - **=IMPORTRANGE("spreadsheet key", "Tab Name!A:A") 
+  - **=IMPORTRANGE("spreadsheet key", "Tab Name!A:A")
+  - ![iScreen Shoter - Google Chrome - 240229211309](https://github.com/MiguelAngelHorta/Control-Inventory/assets/106134627/bd8c4d10-0e02-4430-b631-bd50cc52708d)
+
 
 ## Parse file
 This Google Apps Script processes data in two sheets, 'Data' and 'Main,' by splitting and expanding information in specified columns, and then updates corresponding sheets, such as 'Data by ID,' 'ID by Owner,' 'ID by Framework,' 'ID by Team,' and 'ID by Assignee,' based on the segmented data.
