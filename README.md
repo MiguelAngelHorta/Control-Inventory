@@ -24,8 +24,10 @@ Various Excel formulas to consolidate control data into custom controls along wi
 
 
 ## controlDataSplit file
-This Google Apps Script processes data in two sheets, 'Data' and 'Main,' by splitting and expanding information in specified columns, and then updates corresponding sheets, such as 'Data by ID,' 'ID by Owner,' 'ID by Framework,' 'ID by Team,' and 'ID by Assignee,' based on the segmented data.
+- This Google Apps Script processes data in two sheets, 'Data' and 'Main,' by splitting and expanding information in specified columns, and then updates corresponding sheets, such as 'Data by ID,' 'ID by Owner,' 'ID by Framework,' 'ID by Team,' and 'ID by Assignee,' based on the segmented data.
+  - ![iScreen Shoter - 20240323122129698](https://github.com/MiguelAngelHorta/Control-Inventory/assets/106134627/5c63e283-a7ef-45cb-81ba-d2614f8c6dfd)
 
+ 
 
 
 
